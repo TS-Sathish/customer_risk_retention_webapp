@@ -1,0 +1,172 @@
+{
+  "dataset": {
+    "rows": 7043,
+    "columns": 21,
+    "duplicates": 0,
+    "duplicate_customer_ids": 0,
+    "missing_values": {
+      "customerID": 0,
+      "gender": 0,
+      "SeniorCitizen": 0,
+      "Partner": 0,
+      "Dependents": 0,
+      "tenure": 0,
+      "PhoneService": 0,
+      "MultipleLines": 0,
+      "InternetService": 0,
+      "OnlineSecurity": 0,
+      "OnlineBackup": 0,
+      "DeviceProtection": 0,
+      "TechSupport": 0,
+      "StreamingTV": 0,
+      "StreamingMovies": 0,
+      "Contract": 0,
+      "PaperlessBilling": 0,
+      "PaymentMethod": 0,
+      "MonthlyCharges": 0,
+      "TotalCharges": 11,
+      "Churn": 0
+    },
+    "target_counts": {
+      "No": 5174,
+      "Yes": 1869
+    },
+    "churn_rate": 0.2653698707936959,
+    "schema": {
+      "customerID": "str",
+      "gender": "str",
+      "SeniorCitizen": "int64",
+      "Partner": "str",
+      "Dependents": "str",
+      "tenure": "int64",
+      "PhoneService": "str",
+      "MultipleLines": "str",
+      "InternetService": "str",
+      "OnlineSecurity": "str",
+      "OnlineBackup": "str",
+      "DeviceProtection": "str",
+      "TechSupport": "str",
+      "StreamingTV": "str",
+      "StreamingMovies": "str",
+      "Contract": "str",
+      "PaperlessBilling": "str",
+      "PaymentMethod": "str",
+      "MonthlyCharges": "float64",
+      "TotalCharges": "float64",
+      "Churn": "int64"
+    },
+    "total_charges_coerced_missing": 11
+  },
+  "models": {
+    "xgboost": {
+      "validation_threshold": 0.35,
+      "validation_f1": 0.6516587677725119,
+      "test": {
+        "threshold": 0.35,
+        "accuracy": 0.758694109297374,
+        "precision": 0.537117903930131,
+        "recall": 0.6577540106951871,
+        "f1": 0.5913461538461539,
+        "roc_auc": 0.8226665633315249,
+        "pr_auc": 0.6266082962507658,
+        "confusion_matrix": [
+          [
+            823,
+            212
+          ],
+          [
+            128,
+            246
+          ]
+        ],
+        "test_rows": 1409
+      }
+    },
+    "logistic_regression": {
+      "validation_threshold": 0.5700000000000001,
+      "validation_f1": 0.6460176991150443,
+      "test": {
+        "threshold": 0.5700000000000001,
+        "accuracy": 0.759403832505323,
+        "precision": 0.5333333333333333,
+        "recall": 0.7486631016042781,
+        "f1": 0.6229143492769744,
+        "roc_auc": 0.8320519775762742,
+        "pr_auc": 0.6231740931798698,
+        "confusion_matrix": [
+          [
+            790,
+            245
+          ],
+          [
+            94,
+            280
+          ]
+        ],
+        "test_rows": 1409
+      }
+    }
+  },
+  "selected_model": "xgboost",
+  "splits": {
+    "train": 4225,
+    "validation": 1409,
+    "test": 1409
+  },
+  "segmentation": {
+    "selected_k": 2,
+    "evaluation": [
+      {
+        "k": 2,
+        "inertia": 12831.146641526488,
+        "silhouette": 0.46691416864110513
+      },
+      {
+        "k": 3,
+        "inertia": 8600.551473866555,
+        "silhouette": 0.4118787934119039
+      },
+      {
+        "k": 4,
+        "inertia": 6453.015852248406,
+        "silhouette": 0.41848014204758455
+      },
+      {
+        "k": 5,
+        "inertia": 5063.659339824715,
+        "silhouette": 0.38707523160519175
+      },
+      {
+        "k": 6,
+        "inertia": 4226.083520211027,
+        "silhouette": 0.37361220623312114
+      },
+      {
+        "k": 7,
+        "inertia": 3713.4524396207185,
+        "silhouette": 0.36950297704939106
+      },
+      {
+        "k": 8,
+        "inertia": 3338.4731387705933,
+        "silhouette": 0.35713032177621834
+      }
+    ],
+    "profiles": {
+      "0": {
+        "tenure": 20.19,
+        "MonthlyCharges": 50.73,
+        "TotalCharges": 839.73,
+        "service_count": 2.18
+      },
+      "1": {
+        "tenure": 54.49,
+        "MonthlyCharges": 90.25,
+        "TotalCharges": 4898.57,
+        "service_count": 5.52
+      }
+    }
+  },
+  "interpretation": "Metrics use a held-out test split. SHAP values describe model output contributions and are not causal.",
+  "threshold_selection": "F1 threshold selected on validation data only."
+}
